@@ -1,5 +1,7 @@
 import os
+
 from transformers import AutoTokenizer
+
 from configs import (
     EMBEDDING_MODEL,
     KB_ROOT_PATH,

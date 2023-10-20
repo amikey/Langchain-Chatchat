@@ -97,6 +97,7 @@ class CustomAsyncIteratorCallbackHandler(AsyncIteratorCallbackHandler):
             llm_token="",
         )
         self.queue.put_nowait(dumps(self.cur_tool))
+
     async def on_chat_model_start(
         self,
         serialized: Dict[str, Any],

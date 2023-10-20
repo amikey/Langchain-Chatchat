@@ -4,6 +4,7 @@ from langchain.prompts import StringPromptTemplate
 from typing import List
 from langchain.schema import AgentAction, AgentFinish
 from server.agent import model_container
+begin = False
 class CustomPromptTemplate(StringPromptTemplate):
     # The template to use
     template: str
@@ -37,7 +38,7 @@ class CustomOutputParser(AgentOutputParser):
 
     def parse(self, llm_output: str) -> AgentFinish | tuple[dict[str, str], str] | AgentAction:
         # Check if agent should finish
-        support_agent = ["Azure-OpenAI", "OpenAI", "Anthropic", "Qwen", "qwen-api", "baichuan-api"]  # 目前支持agent的模型
+        support_agent = ["gpt","Qwen","qwen-api","baichuan-api"]
         if not any(agent in model_container.MODEL for agent in support_agent) and self.begin:
             self.begin = False
             stop_words = ["Observation:"]
